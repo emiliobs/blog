@@ -2,6 +2,12 @@ body
 {
     background-image: url("../img/sativa.jpg");
 }
+img
+{
+    padding: 0;
+    margin-right: -15px;
+    margin-bottom: .5em;
+}
 
 .jumbotron
 {

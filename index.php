@@ -27,23 +27,42 @@
                 </div>                       
                 <div class="navbar-collapse collapse" id="navbar">
                   <ul class="nav navbar-nav">
-                    <li><a href="#">Entradas</a></li>
-                    <li><a href="#">Favoritos</a></li>
-                    <li><a href="#">Autores</a></li>                                       
+                    <li><a href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>Entradas</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Favoritos</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>Autores</a></li>                                       
                   </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Iniciar</a></li>
-                        <li><a href="#">Registro</a></li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <?php 
+                                //Llamode forma statica el método AbrirConexion de la clase Conexion:
+                                Conexion :: abrirConexion() . "<br/>";                                
+                                $totalUsuarios = RepositorioUsuario::obtenerNumeroUsuarios(Conexion::obtenerConexion());                                
+                                print count($totalUsuarios);                               
+                                Conexion :: cerrarConexion(). "<br/>";
+                                ?>
+                            </a>
+                        </li>
+                        
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Iniciar Sesión</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Registro</a></li>
                     </ul>
                 </div>
            </div>
         </nav>
         
         <div class="container">
-            <div class="jumbotron">
+<!--            <div class="jumbotron">
                 <h1>Blog de Emilio Barrera.!!</h1>
+                <div class="row">
+                    <div class="col-md-12-12">
+                        
+                    </div>
+                </div>
                 <p>Blog dedicado a Emilio Barrera......</p>
-            </div>
+            </div>-->
+<img src="img/emi.jpg" alt="Emilio Barrera">
         </div>
         
         <div class="container">
@@ -105,16 +124,7 @@
                         <div class="panel-body">
                             <?php 
                                                                
-                                //Llamode forma statica el método AbrirConexion de la clase Conexion:
-                                Conexion :: abrirConexion() . "<br/>";
                                 
-                              
-                                $usuarios = RepositorioUsuario::obtenerTodos(Conexion::obtenerConexion());
-                                
-                                print count($usuarios);
-                                
-                                
-                                Conexion :: cerrarConexion(). "<br/>";
                             ?>
                             <p>Todavia no hay entradas que mostrar.......</p> 
                         </div>

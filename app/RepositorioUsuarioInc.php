@@ -47,6 +47,34 @@
             
             return $usuarios;
         }
+        
+        public static function obtenerNumeroUsuarios($conexion)
+        {
+            $totalUsuarios= null;
+            
+            if (isset($conexion))
+            {
+                try 
+                {
+                    $sql = "select count(*) as total from usuarios";
+                    
+                    $sentencia = $conexion->prepare($sql);
+                    $sentencia-> execute();
+                    $resultado = $sentencia->fetch();
+                    
+                    $totalUsuarios = $resultado['total'];
+                } 
+                catch (PDOException $ex) 
+                {
+                    print 'ERROR: ' . $ex->getMessage();
+                }
+            }
+            
+            return $totalUsuarios;
+        }
+        
+        
+        
     }
 
 ?>
