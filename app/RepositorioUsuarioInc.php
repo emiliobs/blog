@@ -73,7 +73,34 @@
             return $totalUsuarios;
         }
         
-        
+        //insertar usuarios:
+        public static function insertarusuario($conexion, $usuario)
+        {
+            $usuarioInsertado = FALSE;
+            
+            if (isset($conexion))
+            {
+                try 
+                {
+                    $aql = "insert into usuarios(Nombre, Email, Password, FechaRegistro,Activo) Values (:nombre,:email,:password,NOW(),0)";
+                    
+                    $sentencia = $conexion -> prepare($aql);
+                    
+                    $sentencia  -> bindParam(':nombre',   $usuario -> obtenerNombre(),   PDO::PARAM_STR);
+                    $sentencia  -> bindParam(':email',    $usuario -> obtenerEmail(),    PDO::PARAM_STR);
+                    $sentencia  -> bindParam(':password', $usuario -> obtenerPassword(), PDO::PARAM_STR);
+                    
+                   $usuarioInsertado = $sentencia-> execute(); 
+                    
+                } 
+                catch (PDOException $ex)
+                {
+                    print 'ERROR: '. $ex->getMessage();
+                }
+            }
+            
+            return $usuarioInsertado;
+        }
         
     }
 

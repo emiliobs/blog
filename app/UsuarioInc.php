@@ -16,7 +16,7 @@ class  Usuario
         $this->Id            = $id;
         $this->Nombre        = $nombre;
         $this->Email         = $email;
-        $this->password      = $password;
+        $this->password     = $password;
         $this->FechaRegistro = $fechaRegistro;
         $this->Activo        = $activos;
     }
@@ -41,7 +41,7 @@ class  Usuario
     
     public function obtenerPassword()
     {
-        return $this->Password;
+        return $this->password;
     }
     
     public function obtenerFechaRegistro()
@@ -67,7 +67,7 @@ class  Usuario
     
     public function cambiarPassword($password)
     { 
-        $this->Password = $password;
+        $this->password = $password;
     }       
     
 //    public function cambiarFechaRegistro($fechaRegistro)

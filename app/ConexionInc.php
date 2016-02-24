@@ -15,7 +15,7 @@ class Conexion
                 
                 //mysqli-solo trabjasa para myqly y mas rapidp:
                 //pdo-trabja con 20Db, más lento(más versatilidad):
-                self::$conexion = new PDO("mysql:host=$nombreServidor; dbname=$nombreBaseDatos","$nombreUsuario","$password");
+                self::$conexion = new PDO('mysql:host='. NOMBRE_SERVIDOR .'; dbname='. NOMBRE_BD ,NOMBRE_USUARIO,PASSWORD);
                 self::$conexion->SetAttribute(PDO::ATTR_ERRMODE,  PDO::ERRMODE_EXCEPTION);
                 self::$conexion->exec("SET CHARACTER SET utf8");
                 

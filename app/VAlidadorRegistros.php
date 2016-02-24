@@ -9,11 +9,15 @@
 
         private $nombre;
         private  $email;
-        
+        private $clave;
+
+
         private  $errorNombre;
         private  $errorEmail;
         private  $errorClave1;
         private  $errorClave2;
+        
+        
         
         public function  __construct($nombre, $email, $clave1, $clave2)
         {
@@ -22,12 +26,19 @@
             
             $this->nombre = "";
             $this->email  = "";
+            $this->clave = "";
             
             $this->errorNombre = $this->validarNombre($nombre);
             $this->errorEmail  = $this->validarEmail($email);
             $this->errorClave1 =  $this->validarClave1($clave1);
             $this->errorClave2 = $this->validarClave2($clave1,$clave2);
+            
+            if ($this->errorClave1 === "" && $this->errorClave2 === "")
+            {
+                $this->clave = $clave1;
+            }
         }
+        
         
         private function variableIniciada($variable)
         {
@@ -108,7 +119,7 @@
             return "";
         }
         
-        public function ontenerNombre()
+       public function ontenerNombre()
         {
             return $this->nombre;
         }
@@ -118,6 +129,12 @@
             return $this->email;
         }
         
+        public function obtenerClave()
+        {
+            return $this->clave;
+        }
+        
+
         public function obtenerErrorNombre()
         {
             return $this->errorNombre;
