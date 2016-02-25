@@ -11,7 +11,8 @@
         
         
         
-       $validador = new VAlidadorRegistro ($_POST['txtNombre'],$_POST['txtEmail'],$_POST['txtClave1'],$_POST['txtClave2']); 
+       $validador = new VAlidadorRegistro ($_POST['txtNombre'],$_POST['txtEmail'],$_POST['txtClave1'],$_POST['txtClave2'], 
+                                           Conexion :: obtenerConexion()); 
        
         if ($validador -> registroValido())
       {

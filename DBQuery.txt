@@ -1,0 +1,12 @@
+create database blog;
+use blog;
+
+CREATE TABLE usuarios (
+  Id int(11) unique auto_increment NOT NULL,
+  Nombre varchar(25) unique NOT NULL,
+  Email varchar(255) unique NOT NULL,
+  Password varchar(40) NOT NULL,
+  FechaRegistro datetime NOT NULL,
+  Activo tinyint(4) NOT NULL,
+   primary key(Id) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

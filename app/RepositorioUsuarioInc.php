@@ -102,6 +102,81 @@
             return $usuarioInsertado;
         }
         
+        
+        public static function nombreExiste($conexion, $nombre)
+        {
+            $nombreExiste = TRUE;
+            
+            if (isset($conexion))
+            {
+                try 
+                {
+                    $sql = "select *  from usuarios where nombre=:nombre";
+                    
+                    $sentencia = $conexion -> prepare($sql);
+                    
+                    $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                    
+                    $sentencia -> execute();
+                    
+                    $resultado = $sentencia -> fetchAll();
+                    
+                    //comprobar cuando registro hay de acuerdo al parametro $nombre:
+                    if (count($resultado))
+                    {
+                        $nombreExiste = TRUE;
+                    }
+                    else
+                    {
+                        $nombreExiste = FALSE;
+                    }
+                }
+                catch (PDOException $ex) 
+                {
+                    print 'ERROR: '. $ex->getMessage();
+                }
+            }
+            
+            return $nombreExiste;
+        }
+        
+        public static function emailExiste($conexion, $email)
+        {
+            $emailExiste = TRUE;
+            
+            if (isset($conexion))
+            {
+                try 
+                {
+                    $sql = "select * from usuarios where email=:email";
+                    
+                    $sentencia = $conexion -> prepare($sql);
+                    
+                    $sentencia -> bindParam(':email', $email, PDO::PARAM_STR);
+                    
+                    $sentencia -> execute();
+                    
+                    $resultado = $sentencia -> fetchAll();
+                    
+                    //comprobar cuando registro hay de acuerdo al parametro $nombre:
+                    if (count($resultado))
+                    {
+                        $emailExiste = TRUE;
+                    }
+                    else
+                    {
+                        $emailExiste = FALSE;
+                    }
+                }
+                catch (PDOException $ex) 
+                {
+                    print 'ERROR: '. $ex->getMessage();
+                }
+            }
+            
+            return $emailExiste;
+        }
+        
     }
 
 ?>
