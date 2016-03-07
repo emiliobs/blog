@@ -16,12 +16,13 @@
        
         if ($validador -> registroValido())
       {
-        $usuario = new Usuario('', $validador->ontenerNombre(), $validador->obtenerEmail(), $validador->obtenerClave(),'','');
+        $usuario = new Usuario('', $validador->ontenerNombre(), $validador->obtenerEmail(),
+                                  password_hash($validador->obtenerClave(), PASSWORD_DEFAULT),'','');
         $usuarioInsertado = RepositorioUsuario::insertarUsuario(Conexion::obtenerConexion(), $usuario);
         
         if ($usuarioInsertado)
         {
-            //Redirigir a Login:
+            //Redirigir a registro-correcto:
             
         }
       }
